@@ -23,5 +23,7 @@ public interface IRepository {
 	Publisher findPublisher(String publisherName);
 
 	List<Publisher> getPublishersByAuthor(String authorName);
+	
+	List<String> getByQuery(String jpql);
 
 }

@@ -116,4 +116,9 @@ public class BookServiceImpl implements BookService {
 		return new AuthorDto(author.getName(), author.getBirthDate());
 	}
 
+	@Override
+	public Iterable<String> getByQuery(String jpql) {
+		return repository.getByQuery(jpql);
+	}
+
 }

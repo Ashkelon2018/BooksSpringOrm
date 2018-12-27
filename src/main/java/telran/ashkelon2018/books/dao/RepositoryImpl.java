@@ -80,4 +80,10 @@ public class RepositoryImpl implements IRepository {
 		return query.getResultList();
 	}
 
+	@Override
+	public List<String> getByQuery(String jpql) {
+		TypedQuery<String> query = em.createQuery(jpql, String.class);
+		return query.getResultList();
+	}
+
 }

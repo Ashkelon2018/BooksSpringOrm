@@ -18,5 +18,7 @@ public interface BookService {
 	Iterable<AuthorDto> getBookAuthors(Long isbn);
 	
 	Iterable<String> getPublishersByAuthor(String authorName);
+	
+	Iterable<String> getByQuery(String jpql);
 
 }

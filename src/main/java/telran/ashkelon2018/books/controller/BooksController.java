@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import telran.ashkelon2018.books.dto.AuthorDto;
 import telran.ashkelon2018.books.dto.BookDto;
+import telran.ashkelon2018.books.dto.QueryDto;
 import telran.ashkelon2018.books.service.BookService;
 import static telran.ashkelon2018.books.api.BookEndPoints.*;
+
+import javax.persistence.Query;
 
 @RestController
 public class BooksController {
@@ -52,6 +55,12 @@ public class BooksController {
 	@GetMapping(PUBLISHERS + "/{name}")
 	public Iterable<String> getPublishersByAuthor(@PathVariable String name) {
 		return bookService.getPublishersByAuthor(name);
+	}
+	
+	//"select concat(b.title,'-',a.name,'-',b.publisher.publisherName)  from Book b join b.authors a "
+	@PostMapping("/query")
+	public Iterable<String> query(@RequestBody QueryDto query) {
+		return bookService.getByQuery(query.getQuery());
 	}
 
 }
